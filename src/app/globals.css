@@ -49,18 +49,41 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-outfit), system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 28%, transparent);
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/5 dark:border-white/10;
+    @apply bg-white/85 dark:bg-zinc-950/80 backdrop-blur-2xl border-b border-black/[0.06] dark:border-white/10;
   }
   .glass-card {
-    @apply bg-white/90 dark:bg-card/80 backdrop-blur-lg border border-border/50 shadow-lg shadow-black/5;
+    @apply bg-card border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_rgba(0,0,0,0.04)];
   }
   .text-gradient {
-    @apply bg-gradient-to-r from-[#e31e24] to-[#111111] bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #e2231a 0%, #7f1d1d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Soft brand panel — replaces harsh black→red→black bands */
+  .brand-panel {
+    background:
+      radial-gradient(ellipse 80% 70% at 100% 0%, var(--brand-glow), transparent 55%),
+      radial-gradient(ellipse 60% 50% at 0% 100%, rgba(226, 35, 26, 0.18), transparent 50%),
+      linear-gradient(160deg, #0a0a0a 0%, #141414 50%, #0a0a0a 100%);
+  }
+  .hero-scrim {
+    background: linear-gradient(
+      105deg,
+      rgba(0, 0, 0, 0.88) 0%,
+      rgba(0, 0, 0, 0.55) 42%,
+      rgba(0, 0, 0, 0.15) 72%,
+      transparent 100%
+    );
   }
   .skeleton {
     @apply animate-pulse bg-muted rounded-lg;
@@ -80,16 +103,16 @@
 }
 
 .shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 @keyframes countdown-pulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.04); }
 }
 
 .countdown-pulse {
-  animation: countdown-pulse 1s ease-in-out infinite;
+  animation: countdown-pulse 1.2s ease-in-out infinite;
 }

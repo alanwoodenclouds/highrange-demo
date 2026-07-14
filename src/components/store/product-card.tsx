@@ -76,7 +76,7 @@ export function ProductCard({ product, view = "grid", onQuickView }: ProductCard
     <motion.div
       layout
       whileHover={{ y: -4 }}
-      className="group relative rounded-xl border border-border bg-card overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+      className="group relative rounded-2xl border border-border/70 bg-card overflow-hidden shadow-[0_1px_2px_rgba(0,0,0,0.03)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:border-primary/20 transition-all duration-300"
     >
       <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-muted overflow-hidden">
         <SafeImage
@@ -89,12 +89,12 @@ export function ProductCard({ product, view = "grid", onQuickView }: ProductCard
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         {product.discount > 0 && (
-          <Badge className="absolute top-3 left-3 bg-accent-brand border-0 text-white">
+          <Badge className="absolute top-3 left-3 bg-primary border-0 text-white text-[11px] font-semibold shadow-sm">
             -{product.discount}%
           </Badge>
         )}
         {product.isFlashSale && (
-          <Badge className="absolute top-3 right-3 bg-red-600 border-0 text-white animate-pulse">
+          <Badge className="absolute top-3 right-3 bg-zinc-950 border-0 text-white text-[11px]">
             Flash
           </Badge>
         )}
@@ -156,7 +156,7 @@ export function ProductCard({ product, view = "grid", onQuickView }: ProductCard
               <div className="text-xs text-muted-foreground line-through mt-0.5">{formatCurrency(product.mrp)}</div>
             )}
           </div>
-          <Button size="icon" className="h-9 w-9 shrink-0" onClick={handleAdd}>
+          <Button size="icon" className="h-9 w-9 shrink-0 rounded-full shadow-md shadow-primary/20" onClick={handleAdd}>
             <ShoppingCart className="h-4 w-4" />
           </Button>
         </div>

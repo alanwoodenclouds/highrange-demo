@@ -67,7 +67,7 @@ export function AdminSidebar() {
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-4 h-16 border-b border-white/10">
         {(!collapsed || mobile) ? (
-          <BrandLogo variant="full" size="sm" href="/admin" className="shrink-0" />
+          <BrandLogo variant="full" size="sm" href="/admin" />
         ) : (
           <BrandLogo variant="mark" size="sm" href="/admin" />
         )}

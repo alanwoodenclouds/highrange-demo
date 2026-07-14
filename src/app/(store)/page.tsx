@@ -32,14 +32,14 @@ const seasonalBanners = [
     subtitle: "Dehumidifiers & water purifiers from ₹999",
     href: "/products?category=small-appliances",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=400&fit=crop",
-    accent: "from-neutral-900/80",
+    accent: "from-black/85 via-black/35 to-transparent",
   },
   {
     title: "Kitchen Upgrade",
     subtitle: "Premium mixer grinders & microwaves",
     href: "/products?category=kitchen-appliances",
     image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=400&fit=crop",
-    accent: "from-[#e31e24]/85",
+    accent: "from-black/80 via-primary/35 to-transparent",
   },
 ];
 
@@ -53,13 +53,22 @@ function SectionHeader({
   href?: string;
 }) {
   return (
-    <div className="flex items-end justify-between gap-4 mb-6">
-      <div>
-        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">{title}</h2>
-        {subtitle && <p className="text-muted-foreground mt-1 text-sm sm:text-base">{subtitle}</p>}
+    <div className="flex items-end justify-between gap-4 mb-8">
+      <div className="max-w-xl">
+        <div className="h-1 w-8 rounded-full bg-primary mb-3" />
+        <h2 className="font-display text-2xl sm:text-[1.75rem] lg:text-3xl font-bold tracking-tight text-foreground">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="text-muted-foreground mt-1.5 text-sm sm:text-[15px] leading-relaxed">{subtitle}</p>
+        )}
       </div>
       {href && (
-        <Button variant="ghost" asChild className="hidden sm:flex gap-1 text-primary shrink-0">
+        <Button
+          variant="ghost"
+          asChild
+          className="hidden sm:flex gap-1.5 text-primary shrink-0 hover:bg-primary/5 rounded-full"
+        >
           <Link href={href}>
             View all <ArrowRight className="h-4 w-4" />
           </Link>
@@ -71,10 +80,11 @@ function SectionHeader({
 
 export default function HomePage() {
   return (
-    <PageTransition className="pb-16">
-      <div className="mx-auto max-w-7xl px-4 pt-4 sm:pt-6 space-y-12 sm:space-y-16 lg:space-y-20">
-        <HeroBanner banners={PROMO_BANNERS} />
+    <PageTransition className="pb-20">
+      {/* Full-bleed hero — brand first */}
+      <HeroBanner banners={PROMO_BANNERS} />
 
+      <div className="mx-auto max-w-7xl px-4 pt-12 sm:pt-16 space-y-14 sm:space-y-20 lg:space-y-24">
         {/* Categories */}
         <FadeIn>
           <section>
@@ -86,19 +96,19 @@ export default function HomePage() {
                   href={`/products?category=${cat.slug}`}
                   className="group flex-shrink-0 w-36 sm:w-44"
                 >
-                  <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted mb-3 ring-1 ring-border/50 group-hover:ring-primary/50 transition-all group-hover:shadow-lg">
+                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-muted mb-3 ring-1 ring-black/[0.06] group-hover:ring-primary/40 transition-all duration-300 group-hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] group-hover:-translate-y-0.5">
                     <SafeImage
                       src={cat.image}
                       alt={cat.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
                       sizes="176px"
                       unoptimized
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3">
-                      <p className="text-white font-medium text-sm leading-tight">{cat.name}</p>
-                      <p className="text-white/70 text-xs">{cat.productCount} products</p>
+                      <p className="text-white font-semibold text-sm leading-tight">{cat.name}</p>
+                      <p className="text-white/65 text-xs mt-0.5 tabular-nums">{cat.productCount} products</p>
                     </div>
                   </div>
                 </Link>
@@ -154,20 +164,20 @@ export default function HomePage() {
 
         {/* Brands */}
         <FadeIn>
-          <section className="rounded-2xl border border-border bg-card p-6 sm:p-8">
+          <section className="rounded-[1.75rem] border border-border/70 bg-card p-6 sm:p-8 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
             <SectionHeader title="Top Brands" subtitle="Authorized dealer for leading global brands" />
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3 sm:gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
               {brandsWithCounts.slice(0, 9).map((brand) => (
                 <Link
                   key={brand.id}
                   href={`/products?brand=${encodeURIComponent(brand.name)}`}
-                  className="group flex flex-col items-center justify-center rounded-xl border border-border/60 bg-muted/30 p-4 hover:border-primary/40 hover:bg-muted/60 hover:shadow-md transition-all"
+                  className="group flex flex-col items-center justify-center rounded-2xl border border-border/60 bg-muted/40 p-4 hover:border-primary/30 hover:bg-white dark:hover:bg-zinc-900 hover:shadow-md transition-all"
                 >
-                  <div className="h-10 w-10 rounded-full overflow-hidden bg-black flex items-center justify-center font-display font-bold text-primary text-sm group-hover:scale-110 transition-transform ring-1 ring-black/10">
+                  <div className="h-10 w-10 rounded-full bg-zinc-950 text-white flex items-center justify-center font-display font-bold text-xs group-hover:bg-primary transition-colors">
                     {brand.name.slice(0, 2).toUpperCase()}
                   </div>
-                  <span className="text-xs font-medium mt-2 text-center line-clamp-1">{brand.name}</span>
-                  <span className="text-[10px] text-muted-foreground">{brand.productCount}</span>
+                  <span className="text-xs font-medium mt-2.5 text-center line-clamp-1">{brand.name}</span>
+                  <span className="text-[10px] text-muted-foreground tabular-nums">{brand.productCount}</span>
                 </Link>
               ))}
             </div>
@@ -181,7 +191,7 @@ export default function HomePage() {
             <StaggerChildren className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {TESTIMONIALS.map((t) => (
                 <StaggerItem key={t.id}>
-                  <div className="glass-card rounded-2xl p-5 h-full flex flex-col">
+                  <div className="glass-card rounded-2xl p-5 h-full flex flex-col hover:border-primary/20 transition-colors">
                     <div className="flex items-center gap-1 mb-3">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star
@@ -197,11 +207,11 @@ export default function HomePage() {
                         alt={t.name}
                         width={40}
                         height={40}
-                        className="rounded-full bg-muted"
+                        className="rounded-full bg-muted ring-2 ring-background"
                         unoptimized
                       />
                       <div>
-                        <p className="text-sm font-medium">{t.name}</p>
+                        <p className="text-sm font-semibold">{t.name}</p>
                         <p className="text-xs text-muted-foreground">{t.role} · {t.location}</p>
                       </div>
                     </div>
@@ -231,12 +241,14 @@ export default function HomePage() {
                     sizes="(max-width:768px) 100vw, 50vw"
                     unoptimized
                   />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${banner.accent} to-transparent`} />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${banner.accent}`} />
                   <div className="absolute inset-0 flex flex-col justify-center p-6 sm:p-8">
-                    <Badge className="w-fit mb-2 bg-white/20 border-0 text-white backdrop-blur-sm">Limited Time</Badge>
-                    <h3 className="font-display text-xl sm:text-2xl font-bold text-white">{banner.title}</h3>
-                    <p className="text-white/80 text-sm mt-1">{banner.subtitle}</p>
-                    <span className="inline-flex items-center gap-1 text-white text-sm font-medium mt-3 group-hover:gap-2 transition-all">
+                    <Badge className="w-fit mb-2 bg-white/15 border border-white/20 text-white backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold">
+                      Limited time
+                    </Badge>
+                    <h3 className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight">{banner.title}</h3>
+                    <p className="text-white/75 text-sm mt-1.5">{banner.subtitle}</p>
+                    <span className="inline-flex items-center gap-1.5 text-white text-sm font-medium mt-4 group-hover:gap-2.5 transition-all">
                       Shop now <ChevronRight className="h-4 w-4" />
                     </span>
                   </div>

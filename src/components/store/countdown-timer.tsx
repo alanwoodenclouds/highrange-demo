@@ -51,12 +51,12 @@ export function CountdownTimer({ targetDate, className }: CountdownTimerProps) {
       {units.map((unit, i) => (
         <div key={unit.label} className="flex items-center gap-2 sm:gap-3">
           <div className="flex flex-col items-center">
-            <div className="countdown-pulse min-w-[52px] sm:min-w-[64px] rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-2 sm:px-4 sm:py-3">
-              <span className="font-display text-2xl sm:text-3xl font-bold text-white tabular-nums" suppressHydrationWarning>
+            <div className="countdown-pulse min-w-[52px] sm:min-w-[68px] rounded-2xl bg-white/[0.08] backdrop-blur-md border border-white/15 px-3 py-2.5 sm:px-4 sm:py-3 shadow-inner">
+              <span className="font-display text-2xl sm:text-3xl font-bold text-white tabular-nums tracking-tight" suppressHydrationWarning>
                 {mounted ? unit.value : "00"}
               </span>
             </div>
-            <span className="text-[10px] sm:text-xs text-white/70 mt-1 uppercase tracking-wider">
+            <span className="text-[10px] sm:text-[11px] text-zinc-400 mt-1.5 uppercase tracking-[0.14em]">
               {unit.label}
             </span>
           </div>

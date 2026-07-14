@@ -84,7 +84,7 @@ export function ChatWidget() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setOpen(!open)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-zinc-950 text-white shadow-2xl shadow-black/30 ring-2 ring-primary flex items-center justify-center"
         aria-label="Open chat"
       >
         {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -98,11 +98,13 @@ export function ChatWidget() {
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             className="fixed bottom-24 right-6 z-50 w-[min(100vw-2rem,380px)] h-[480px] rounded-2xl border border-border bg-card shadow-2xl flex flex-col overflow-hidden"
           >
-            <div className="bg-primary text-primary-foreground px-4 py-3 flex items-center gap-2">
-              <Sparkles className="h-4 w-4" />
+            <div className="bg-zinc-950 text-white px-4 py-3.5 flex items-center gap-3 border-b border-primary/30">
+              <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
+                <Sparkles className="h-4 w-4 text-primary" />
+              </div>
               <div>
                 <p className="font-display font-semibold text-sm">Highrange AI</p>
-                <p className="text-[10px] opacity-80">Shopping assistant · Demo</p>
+                <p className="text-[10px] text-zinc-400">Shopping assistant · Demo</p>
               </div>
             </div>
 

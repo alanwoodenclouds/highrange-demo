@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Sparkles } from "lucide-react";
+import { Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FadeIn } from "@/components/shared/page-transition";
+import { BrandLogo } from "@/components/shared/brand-logo";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
@@ -29,45 +30,41 @@ export function Newsletter() {
 
   return (
     <FadeIn>
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black via-[#e31e24] to-black p-8 sm:p-12 lg:p-16">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent-brand/20 rounded-full translate-y-1/2 -translate-x-1/2" />
+      <section className="relative overflow-hidden rounded-[1.75rem] brand-panel p-8 sm:p-12 lg:p-16 ring-1 ring-white/10">
+        <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/20 blur-3xl" />
+        <div className="absolute -bottom-32 -left-16 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
 
-        <div className="relative max-w-xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm text-primary-foreground/90 mb-4">
-            <Sparkles className="h-4 w-4" />
-            Join 25,000+ subscribers
+        <div className="relative max-w-lg mx-auto text-center">
+          <div className="flex justify-center mb-6">
+            <BrandLogo variant="mark" size="lg" href={undefined} />
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-foreground mb-3">
-            Get exclusive deals in your inbox
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 tracking-tight">
+            Deals before they sell out
           </h2>
-          <p className="text-primary-foreground/80 mb-8 text-sm sm:text-base">
-            Be the first to know about flash sales, new launches, and member-only offers across Idukki.
+          <p className="text-zinc-400 mb-8 text-sm sm:text-base leading-relaxed">
+            Flash sales, new launches, and member offers — delivered to your inbox.
           </p>
           <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <div className="relative flex-1">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
               <Input
                 type="email"
                 placeholder="your@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-9 bg-white border-0 h-12"
+                className="pl-10 bg-white/95 border-0 h-12 rounded-full text-zinc-900 placeholder:text-zinc-400"
               />
             </div>
             <Button
               type="submit"
-              variant="accent"
               size="lg"
               disabled={loading}
-              className="h-12 px-8 rounded-lg shrink-0"
+              className="h-12 px-8 rounded-full shrink-0 bg-primary hover:bg-primary/90"
             >
-              {loading ? "Subscribing..." : "Subscribe"}
+              {loading ? "Joining…" : "Subscribe"}
             </Button>
           </form>
-          <p className="text-xs text-primary-foreground/60 mt-4">
-            No spam. Unsubscribe anytime.
-          </p>
+          <p className="text-xs text-zinc-500 mt-5">No spam. Unsubscribe anytime.</p>
         </div>
       </section>
     </FadeIn>

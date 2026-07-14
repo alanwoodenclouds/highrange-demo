@@ -603,7 +603,7 @@ export const PROMO_BANNERS: PromoBanner[] = [
     cta: "Shop Now",
     href: "/products?category=air-conditioners",
     image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=1400&h=600&fit=crop",
-    gradient: "from-black/90 via-[#e31e24]/75 to-transparent",
+    gradient: "hero-scrim",
   },
   {
     id: "banner-2",
@@ -612,7 +612,7 @@ export const PROMO_BANNERS: PromoBanner[] = [
     cta: "Explore",
     href: "/products?category=televisions",
     image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=1400&h=600&fit=crop",
-    gradient: "from-black/90 via-neutral-900/70 to-transparent",
+    gradient: "hero-scrim",
   },
   {
     id: "banner-3",
@@ -621,7 +621,7 @@ export const PROMO_BANNERS: PromoBanner[] = [
     cta: "View Offers",
     href: "/products?sort=emi",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1400&h=600&fit=crop",
-    gradient: "from-[#e31e24]/90 via-black/60 to-transparent",
+    gradient: "hero-scrim",
   },
 ];
 
