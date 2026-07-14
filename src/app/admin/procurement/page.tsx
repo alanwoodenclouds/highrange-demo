@@ -49,7 +49,7 @@ export default function ProcurementPage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card">
             <CardContent className="p-4">
-              <s.icon className="h-4 w-4 text-teal-500 mb-2" />
+              <s.icon className="h-4 w-4 text-red-500 mb-2" />
               <p className="text-xs text-muted-foreground">{s.label}</p>
               <p className="text-lg font-bold mt-0.5">{s.value}</p>
             </CardContent>

@@ -29,7 +29,7 @@ export function Newsletter() {
 
   return (
     <FadeIn>
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-primary to-chart-3 p-8 sm:p-12 lg:p-16">
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black via-[#e31e24] to-black p-8 sm:p-12 lg:p-16">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent-brand/20 rounded-full translate-y-1/2 -translate-x-1/2" />
 

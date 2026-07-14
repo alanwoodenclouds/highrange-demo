@@ -20,8 +20,8 @@ const REPORT_CATEGORIES = [
   {
     title: "Sales Reports",
     icon: TrendingUp,
-    color: "from-teal-500/20 to-teal-600/10",
-    iconColor: "text-teal-500",
+    color: "from-red-500/20 to-red-600/10",
+    iconColor: "text-red-500",
     reports: [
       { name: "Daily Sales Summary", desc: "Today's transactions & revenue", metric: formatCurrency(DASHBOARD_STATS.revenue / 30), href: "/admin/sales" },
       { name: "Monthly Revenue Report", desc: "MTD sales across branches", metric: formatCurrency(DASHBOARD_STATS.revenue), href: "/admin/finance" },
@@ -44,8 +44,8 @@ const REPORT_CATEGORIES = [
   {
     title: "Customer Reports",
     icon: Users,
-    color: "from-violet-500/20 to-violet-600/10",
-    iconColor: "text-violet-500",
+    color: "from-red-500/20 to-red-700/10",
+    iconColor: "text-red-500",
     reports: [
       { name: "Customer Directory", desc: "Full CRM export", metric: formatNumber(CUSTOMERS.length) + " customers", href: "/admin/customers" },
       { name: "Loyalty Points Report", desc: "Points issued & redeemed", metric: formatNumber(CUSTOMERS.reduce((s, c) => s + c.loyaltyPoints, 0)), href: "/admin/customers" },
@@ -107,12 +107,12 @@ export default function ReportsPage() {
         </div>
       </div>
 
-      <Card className="glass-card border-teal-500/20 bg-gradient-to-r from-teal-500/5 via-transparent to-violet-500/5">
+      <Card className="glass-card border-red-500/20 bg-gradient-to-r from-red-500/5 via-transparent to-red-500/5">
         <CardContent className="p-6">
           <div className="flex flex-col md:flex-row md:items-center gap-6">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <FileText className="h-5 w-5 text-teal-500" />
+                <FileText className="h-5 w-5 text-red-500" />
                 <h3 className="font-display font-bold text-lg">Executive Summary — July 2026</h3>
                 <Badge variant="success" className="text-[10px]">Ready</Badge>
               </div>
@@ -155,16 +155,16 @@ export default function ReportsPage() {
                 {category.reports.map((report) => (
                   <motion.div key={report.name} whileHover={{ y: -3 }} transition={{ type: "spring", stiffness: 400 }}>
                     <Link href={report.href}>
-                      <Card className="glass-card h-full hover:shadow-lg hover:border-teal-500/30 transition-all cursor-pointer group">
+                      <Card className="glass-card h-full hover:shadow-lg hover:border-red-500/30 transition-all cursor-pointer group">
                         <CardHeader className="pb-2">
                           <div className="flex items-start justify-between">
-                            <CardTitle className="text-sm font-medium leading-snug group-hover:text-teal-400 transition-colors">{report.name}</CardTitle>
-                            <BarChart3 className="h-4 w-4 text-muted-foreground group-hover:text-teal-500 transition-colors shrink-0" />
+                            <CardTitle className="text-sm font-medium leading-snug group-hover:text-red-400 transition-colors">{report.name}</CardTitle>
+                            <BarChart3 className="h-4 w-4 text-muted-foreground group-hover:text-red-500 transition-colors shrink-0" />
                           </div>
                           <CardDescription className="text-xs">{report.desc}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-lg font-bold text-teal-500">{report.metric}</p>
+                          <p className="text-lg font-bold text-red-500">{report.metric}</p>
                           <div className="flex gap-2 mt-3">
                             <Button variant="outline" size="sm" className="h-7 text-xs flex-1" onClick={(e) => e.preventDefault()}>
                               <Download className="h-3 w-3 mr-1" />PDF
@@ -232,9 +232,9 @@ export default function ReportsPage() {
           { icon: Sparkles, label: "AI Analytics Report", desc: "ML insights & forecasts", href: "/admin/ai" },
         ].map((item) => (
           <Link key={item.label} href={item.href}>
-            <Card className="glass-card hover:shadow-md hover:border-teal-500/30 transition-all cursor-pointer">
+            <Card className="glass-card hover:shadow-md hover:border-red-500/30 transition-all cursor-pointer">
               <CardContent className="p-5 flex items-center gap-4">
-                <item.icon className="h-8 w-8 text-teal-500 shrink-0" />
+                <item.icon className="h-8 w-8 text-red-500 shrink-0" />
                 <div>
                   <p className="font-medium">{item.label}</p>
                   <p className="text-xs text-muted-foreground">{item.desc}</p>

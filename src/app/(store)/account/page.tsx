@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
@@ -70,7 +70,7 @@ function AccountContent() {
           <div className="flex items-center gap-4 mb-8">
             <div className="relative h-16 w-16 rounded-full overflow-hidden bg-primary/10 ring-2 ring-primary/20">
               {MOCK_CUSTOMER.avatar ? (
-                <Image
+                <SafeImage
                   src={MOCK_CUSTOMER.avatar}
                   alt={MOCK_CUSTOMER.name}
                   fill
@@ -205,7 +205,7 @@ function AccountContent() {
                         {order.items.map((item) => (
                           <div key={item.productId} className="flex items-center gap-2 shrink-0">
                             <div className="relative h-12 w-12 rounded-lg overflow-hidden bg-muted">
-                              <Image src={item.image} alt={item.productName} fill className="object-cover" sizes="48px" unoptimized />
+                              <SafeImage src={item.image} alt={item.productName} fill className="object-cover" sizes="48px" unoptimized />
                             </div>
                             <div className="min-w-0">
                               <p className="text-xs line-clamp-1 max-w-[120px]">{item.productName}</p>

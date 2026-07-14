@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles, TrendingUp, Package, Users, MessageSquare, Send, Brain,
@@ -87,21 +87,21 @@ export default function AIPage() {
   return (
     <PageTransition className="space-y-6">
       <div className="flex items-center gap-3">
-        <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-teal-500 to-violet-600 flex items-center justify-center">
+        <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
           <Sparkles className="h-6 w-6 text-white" />
         </div>
         <div>
           <h2 className="text-2xl font-display font-bold">AI Insights</h2>
           <p className="text-muted-foreground text-sm">Powered by machine learning on your store data</p>
         </div>
-        <Badge className="ml-auto bg-gradient-to-r from-teal-500/20 to-violet-500/20 text-teal-300 border-teal-500/30">Beta</Badge>
+        <Badge className="ml-auto bg-gradient-to-r from-red-500/20 to-red-500/20 text-red-300 border-red-500/30">Beta</Badge>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: "AI Confidence", value: "94.2%", icon: Brain, color: "text-violet-400" },
+          { label: "AI Confidence", value: "94.2%", icon: Brain, color: "text-red-400" },
           { label: "Predicted Growth", value: "+12.4%", icon: TrendingUp, color: "text-emerald-400" },
-          { label: "Products Analyzed", value: formatNumber(PRODUCTS.length), icon: Package, color: "text-teal-400" },
+          { label: "Products Analyzed", value: formatNumber(PRODUCTS.length), icon: Package, color: "text-red-400" },
           { label: "Customer Segments", value: "6", icon: Users, color: "text-blue-400" },
         ].map((s) => (
           <Card key={s.label} className="glass-card">
@@ -119,7 +119,7 @@ export default function AIPage() {
       <div className="grid lg:grid-cols-3 gap-6">
         <Card className="glass-card lg:col-span-2">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5 text-teal-500" />Sales Forecasting</CardTitle>
+            <CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5 text-red-500" />Sales Forecasting</CardTitle>
             <CardDescription>6-month revenue projection with confidence bands</CardDescription>
           </CardHeader>
           <CardContent>
@@ -148,7 +148,7 @@ export default function AIPage() {
 
         <Card className="glass-card flex flex-col">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><MessageSquare className="h-5 w-5 text-teal-500" />AI Chatbot</CardTitle>
+            <CardTitle className="flex items-center gap-2"><MessageSquare className="h-5 w-5 text-red-500" />AI Chatbot</CardTitle>
             <CardDescription>Ask questions about your business</CardDescription>
           </CardHeader>
           <CardContent className="flex-1 flex flex-col">
@@ -163,7 +163,7 @@ export default function AIPage() {
                   >
                     <div className={cn(
                       "max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm",
-                      msg.role === "user" ? "bg-teal-500 text-white rounded-br-md" : "bg-muted/50 rounded-bl-md"
+                      msg.role === "user" ? "bg-red-500 text-white rounded-br-md" : "bg-muted/50 rounded-bl-md"
                     )}>
                       {msg.text}
                     </div>
@@ -173,7 +173,7 @@ export default function AIPage() {
             </div>
             <div className="flex flex-wrap gap-1.5 mb-3">
               {BOT_SUGGESTIONS.map((s) => (
-                <button key={s} onClick={() => sendMessage(s)} className="text-[10px] px-2 py-1 rounded-full bg-muted/50 hover:bg-teal-500/20 transition-colors text-muted-foreground hover:text-teal-400">
+                <button key={s} onClick={() => sendMessage(s)} className="text-[10px] px-2 py-1 rounded-full bg-muted/50 hover:bg-red-500/20 transition-colors text-muted-foreground hover:text-red-400">
                   {s}
                 </button>
               ))}
@@ -194,16 +194,16 @@ export default function AIPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             {recommendations.map((p) => (
-              <div key={p.id} className="flex items-center gap-3 p-2.5 rounded-xl border border-border/50 hover:border-teal-500/30 transition-colors">
+              <div key={p.id} className="flex items-center gap-3 p-2.5 rounded-xl border border-border/50 hover:border-red-500/30 transition-colors">
                 <div className="relative h-12 w-12 rounded-lg overflow-hidden bg-muted shrink-0">
-                  <Image src={p.images[0]} alt={p.name} fill className="object-cover" sizes="48px" />
+                  <SafeImage src={p.images[0]} alt={p.name} fill className="object-cover" sizes="48px" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium truncate">{p.name}</p>
                   <p className="text-xs text-muted-foreground">{p.reason}</p>
                 </div>
                 <div className="text-right">
-                  <Badge className="bg-violet-500/20 text-violet-300 border-0">{p.confidence}%</Badge>
+                  <Badge className="bg-red-500/20 text-red-300 border-0">{p.confidence}%</Badge>
                   <p className="text-xs font-medium mt-0.5">{formatCurrency(p.price)}</p>
                 </div>
               </div>
@@ -229,7 +229,7 @@ export default function AIPage() {
                   <span>~{item.daysLeft} days left</span>
                 </div>
                 <div className="h-1.5 rounded-full bg-muted mt-2 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-teal-500 to-red-500 rounded-full" style={{ width: `${(item.predicted / item.current) * 100}%` }} />
+                  <div className="h-full bg-gradient-to-r from-red-500 to-red-500 rounded-full" style={{ width: `${(item.predicted / item.current) * 100}%` }} />
                 </div>
               </div>
             ))}
@@ -245,7 +245,7 @@ export default function AIPage() {
         <CardContent>
           <div className="grid md:grid-cols-4 gap-4 mb-6">
             <div className="p-4 rounded-xl bg-muted/30 text-center">
-              <p className="text-2xl font-bold text-teal-500">{customerInsights.highValue}</p>
+              <p className="text-2xl font-bold text-red-500">{customerInsights.highValue}</p>
               <p className="text-xs text-muted-foreground mt-1">High-Value Customers</p>
             </div>
             <div className="p-4 rounded-xl bg-muted/30 text-center">
@@ -275,9 +275,9 @@ export default function AIPage() {
         </CardContent>
       </Card>
 
-      <Card className="glass-card border-violet-500/20 bg-gradient-to-br from-violet-500/5 to-teal-500/5">
+      <Card className="glass-card border-red-500/20 bg-gradient-to-br from-red-500/5 to-red-500/5">
         <CardContent className="p-6 flex items-center gap-4">
-          <BarChart3 className="h-10 w-10 text-violet-400 shrink-0" />
+          <BarChart3 className="h-10 w-10 text-red-400 shrink-0" />
           <div>
             <p className="font-medium">Demand Forecasting Summary</p>
             <p className="text-sm text-muted-foreground mt-1">

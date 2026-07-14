@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { BrandLogo } from "@/components/shared/brand-logo";
 import { useCartStore, useWishlistStore } from "@/stores";
 import { CATEGORIES_WITH_COUNTS } from "@/data";
 import { cn } from "@/lib/utils";
@@ -74,19 +75,10 @@ export function StoreHeader() {
               {mobileOpen ? <X /> : <Menu />}
             </Button>
 
-            <Link href="/" className="flex items-center gap-2 shrink-0 group">
-              <div className="h-9 w-9 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-display font-bold text-lg group-hover:scale-105 transition-transform">
-                H
-              </div>
-              <div className="hidden sm:block">
-                <div className="font-display font-bold text-lg leading-tight tracking-tight">
-                  Highrange
-                </div>
-                <div className="text-[10px] text-muted-foreground leading-none tracking-wider uppercase">
-                  Home Appliances
-                </div>
-              </div>
-            </Link>
+            <div className="shrink-0">
+              <BrandLogo variant="full" size="md" priority className="hidden sm:block" />
+              <BrandLogo variant="mark" size="sm" priority className="sm:hidden" />
+            </div>
 
             {/* Categories */}
             <div className="relative hidden lg:block">

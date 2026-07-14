@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { ArrowRight, Star, ChevronRight } from "lucide-react";
 import {
   PRODUCTS,
@@ -31,15 +31,15 @@ const seasonalBanners = [
     title: "Monsoon Ready",
     subtitle: "Dehumidifiers & water purifiers from ₹999",
     href: "/products?category=small-appliances",
-    image: "https://images.unsplash.com/photo-1585771724684-a3825897476a?w=800&h=400&fit=crop",
-    accent: "from-blue-600/80",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=400&fit=crop",
+    accent: "from-neutral-900/80",
   },
   {
     title: "Kitchen Upgrade",
     subtitle: "Premium mixer grinders & microwaves",
     href: "/products?category=kitchen-appliances",
     image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=400&fit=crop",
-    accent: "from-orange-600/80",
+    accent: "from-[#e31e24]/85",
   },
 ];
 
@@ -87,7 +87,7 @@ export default function HomePage() {
                   className="group flex-shrink-0 w-36 sm:w-44"
                 >
                   <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted mb-3 ring-1 ring-border/50 group-hover:ring-primary/50 transition-all group-hover:shadow-lg">
-                    <Image
+                    <SafeImage
                       src={cat.image}
                       alt={cat.name}
                       fill
@@ -163,7 +163,7 @@ export default function HomePage() {
                   href={`/products?brand=${encodeURIComponent(brand.name)}`}
                   className="group flex flex-col items-center justify-center rounded-xl border border-border/60 bg-muted/30 p-4 hover:border-primary/40 hover:bg-muted/60 hover:shadow-md transition-all"
                 >
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center font-display font-bold text-primary text-sm group-hover:scale-110 transition-transform">
+                  <div className="h-10 w-10 rounded-full overflow-hidden bg-black flex items-center justify-center font-display font-bold text-primary text-sm group-hover:scale-110 transition-transform ring-1 ring-black/10">
                     {brand.name.slice(0, 2).toUpperCase()}
                   </div>
                   <span className="text-xs font-medium mt-2 text-center line-clamp-1">{brand.name}</span>
@@ -192,7 +192,7 @@ export default function HomePage() {
                     </div>
                     <p className="text-sm text-muted-foreground leading-relaxed flex-1">&ldquo;{t.comment}&rdquo;</p>
                     <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/50">
-                      <Image
+                      <SafeImage
                         src={t.avatar}
                         alt={t.name}
                         width={40}
@@ -223,7 +223,7 @@ export default function HomePage() {
                   href={banner.href}
                   className="group relative overflow-hidden rounded-2xl aspect-[2/1] min-h-[180px]"
                 >
-                  <Image
+                  <SafeImage
                     src={banner.image}
                     alt={banner.title}
                     fill

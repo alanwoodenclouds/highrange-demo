@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { Minus, Plus, Trash2, Tag, ShoppingBag, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
@@ -115,7 +115,7 @@ export default function CartPage() {
                     href={`/product/${product.slug}`}
                     className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 rounded-lg overflow-hidden bg-muted"
                   >
-                    <Image
+                    <SafeImage
                       src={product.images[0]}
                       alt={product.name}
                       fill

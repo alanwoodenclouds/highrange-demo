@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { motion } from "framer-motion";
 import {
   Users, UserCheck, Clock, Calendar, IndianRupee, Briefcase, Search,
@@ -21,7 +21,7 @@ import type { EmployeeRole } from "@/types";
 
 const ROLE_COLORS: Record<EmployeeRole, string> = {
   admin: "#8b5cf6", manager: "#3b82f6", sales: "#14b8a6", inventory: "#f59e0b",
-  delivery: "#06b6d4", technician: "#10b981", accountant: "#6366f1", cashier: "#ec4899",
+  delivery: "#737373", technician: "#16a34a", accountant: "#525252", cashier: "#e31e24",
 };
 
 const LEAVE_REQUESTS = [
@@ -73,8 +73,8 @@ export default function EmployeesPage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-teal-500/15 flex items-center justify-center">
-                <s.icon className="h-5 w-5 text-teal-500" />
+              <div className="h-10 w-10 rounded-lg bg-red-500/15 flex items-center justify-center">
+                <s.icon className="h-5 w-5 text-red-500" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -137,7 +137,7 @@ export default function EmployeesPage() {
                       <td className="py-3">
                         <div className="flex items-center gap-3">
                           <div className="relative h-9 w-9 rounded-full overflow-hidden bg-muted">
-                            {emp.avatar && <Image src={emp.avatar} alt={emp.name} fill className="object-cover" sizes="36px" />}
+                            {emp.avatar && <SafeImage src={emp.avatar} alt={emp.name} fill className="object-cover" sizes="36px" />}
                           </div>
                           <div>
                             <p className="font-medium">{emp.name}</p>
@@ -152,7 +152,7 @@ export default function EmployeesPage() {
                       <td className="py-3">
                         <div className="flex items-center gap-1">
                           <div className="h-1.5 w-16 rounded-full bg-muted overflow-hidden">
-                            <div className="h-full bg-teal-500 rounded-full" style={{ width: `${(emp.performanceScore / 5) * 100}%` }} />
+                            <div className="h-full bg-red-500 rounded-full" style={{ width: `${(emp.performanceScore / 5) * 100}%` }} />
                           </div>
                           <span className="text-xs">{emp.performanceScore}</span>
                         </div>
@@ -215,7 +215,7 @@ export default function EmployeesPage() {
               return (
                 <Card key={shift} className="glass-card">
                   <CardContent className="p-5">
-                    <div className="flex items-center gap-3 mb-3"><Clock className="h-5 w-5 text-teal-500" /><p className="font-medium">{shift}</p></div>
+                    <div className="flex items-center gap-3 mb-3"><Clock className="h-5 w-5 text-red-500" /><p className="font-medium">{shift}</p></div>
                     <p className="text-3xl font-bold">{count}</p>
                     <p className="text-xs text-muted-foreground mt-1">employees assigned</p>
                   </CardContent>
@@ -259,9 +259,9 @@ export default function EmployeesPage() {
                   })}
                 </tbody>
               </table>
-              <div className="mt-4 p-4 rounded-xl bg-teal-500/10 border border-teal-500/20 flex justify-between items-center">
+              <div className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex justify-between items-center">
                 <span className="font-medium">Total Monthly Payroll</span>
-                <span className="text-xl font-bold text-teal-500">{formatCurrency(payrollTotal)}</span>
+                <span className="text-xl font-bold text-red-500">{formatCurrency(payrollTotal)}</span>
               </div>
             </CardContent>
           </Card>
@@ -272,7 +272,7 @@ export default function EmployeesPage() {
             <CardHeader><CardTitle>Leave Requests</CardTitle><CardDescription>Pending approvals & recent decisions</CardDescription></CardHeader>
             <CardContent className="space-y-3">
               {LEAVE_REQUESTS.map((req) => (
-                <div key={req.id} className="flex items-center justify-between p-4 rounded-xl border border-border/50 hover:border-teal-500/20 transition-colors">
+                <div key={req.id} className="flex items-center justify-between p-4 rounded-xl border border-border/50 hover:border-red-500/20 transition-colors">
                   <div>
                     <p className="font-medium text-sm">{req.name}</p>
                     <p className="text-xs text-muted-foreground">{req.type} · {req.from} to {req.to}</p>

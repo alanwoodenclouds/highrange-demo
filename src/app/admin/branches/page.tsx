@@ -49,12 +49,12 @@ export default function BranchesPage() {
             <StaggerItem key={bp.branch}>
               <motion.div whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Card className="glass-card overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="h-2 bg-gradient-to-r from-teal-500 to-teal-700" style={{ opacity: 0.4 + (i * 0.1) }} />
+                  <div className="h-2 bg-gradient-to-r from-red-500 to-red-700" style={{ opacity: 0.4 + (i * 0.1) }} />
                   <CardHeader className="pb-2">
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="h-11 w-11 rounded-xl bg-teal-500/15 flex items-center justify-center">
-                          <Building2 className="h-5 w-5 text-teal-500" />
+                        <div className="h-11 w-11 rounded-xl bg-red-500/15 flex items-center justify-center">
+                          <Building2 className="h-5 w-5 text-red-500" />
                         </div>
                         <div>
                           <CardTitle className="text-lg">{bp.branch}</CardTitle>
@@ -71,7 +71,7 @@ export default function BranchesPage() {
                     <div className="grid grid-cols-2 gap-3">
                       <div className="p-3 rounded-xl bg-muted/30">
                         <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1"><IndianRupee className="h-3 w-3" />Sales</div>
-                        <p className="text-lg font-bold text-teal-500">{formatCurrency(bp.sales)}</p>
+                        <p className="text-lg font-bold text-red-500">{formatCurrency(bp.sales)}</p>
                       </div>
                       <div className="p-3 rounded-xl bg-muted/30">
                         <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1"><Package className="h-3 w-3" />Orders</div>

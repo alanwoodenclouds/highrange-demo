@@ -22,7 +22,7 @@ const TYPE_ICONS = { repair: Wrench, installation: Settings, warranty: Shield, a
 const STATUS_VARIANT: Record<ServiceStatus, "default" | "secondary" | "success" | "warning" | "destructive"> = {
   open: "secondary", assigned: "default", in_progress: "warning", awaiting_parts: "warning", completed: "success", cancelled: "destructive",
 };
-const PRIORITY_COLORS = { low: "text-slate-400", medium: "text-blue-400", high: "text-amber-400", urgent: "text-red-400" };
+const PRIORITY_COLORS = { low: "text-neutral-400", medium: "text-blue-400", high: "text-amber-400", urgent: "text-red-400" };
 
 export default function ServicePage() {
   const [search, setSearch] = useState("");
@@ -67,8 +67,8 @@ export default function ServicePage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.warn ? "bg-amber-500/15" : "bg-teal-500/15")}>
-                <s.icon className={cn("h-5 w-5", s.warn ? "text-amber-500" : "text-teal-500")} />
+              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.warn ? "bg-amber-500/15" : "bg-red-500/15")}>
+                <s.icon className={cn("h-5 w-5", s.warn ? "text-amber-500" : "text-red-500")} />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -164,8 +164,8 @@ export default function ServicePage() {
         <CardContent>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {technicians.slice(0, 8).map((tech) => (
-              <div key={tech.id} className="flex items-center gap-3 p-3 rounded-xl border border-border/50 hover:border-teal-500/30 transition-colors">
-                <div className="h-9 w-9 rounded-full bg-teal-500/15 flex items-center justify-center"><User className="h-4 w-4 text-teal-500" /></div>
+              <div key={tech.id} className="flex items-center gap-3 p-3 rounded-xl border border-border/50 hover:border-red-500/30 transition-colors">
+                <div className="h-9 w-9 rounded-full bg-red-500/15 flex items-center justify-center"><User className="h-4 w-4 text-red-500" /></div>
                 <div>
                   <p className="text-sm font-medium">{tech.name}</p>
                   <p className="text-xs text-muted-foreground">{tech.branch} · Score {tech.performanceScore}</p>

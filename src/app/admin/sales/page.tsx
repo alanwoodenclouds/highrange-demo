@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { motion } from "framer-motion";
 import {
   Search, Plus, Minus, Trash2, CreditCard, Receipt, RotateCcw,
@@ -92,18 +92,18 @@ export default function SalesPage() {
                     {searchResults.map((product) => (
                       <motion.button
                         key={product.id}
-                        className="flex items-center gap-3 p-3 rounded-xl border border-border/50 hover:border-teal-500/50 hover:bg-muted/30 text-left transition-all"
+                        className="flex items-center gap-3 p-3 rounded-xl border border-border/50 hover:border-red-500/50 hover:bg-muted/30 text-left transition-all"
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.99 }}
                         onClick={() => addToCart(product)}
                       >
                         <div className="relative h-12 w-12 rounded-lg overflow-hidden bg-muted shrink-0">
-                          <Image src={product.images[0]} alt={product.name} fill className="object-cover" sizes="48px" />
+                          <SafeImage src={product.images[0]} alt={product.name} fill className="object-cover" sizes="48px" />
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="text-sm font-medium truncate">{product.name}</p>
                           <p className="text-xs text-muted-foreground">{product.sku}</p>
-                          <p className="text-sm font-bold text-teal-500 mt-0.5">{formatCurrency(product.price)}</p>
+                          <p className="text-sm font-bold text-red-500 mt-0.5">{formatCurrency(product.price)}</p>
                         </div>
                         <Plus className="h-4 w-4 text-muted-foreground shrink-0" />
                       </motion.button>
@@ -128,7 +128,7 @@ export default function SalesPage() {
                         <div key={item.product.id} className="flex items-center gap-2 p-2 rounded-lg bg-muted/30">
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium truncate">{item.product.name}</p>
-                            <p className="text-xs text-teal-500">{formatCurrency(item.product.price)}</p>
+                            <p className="text-xs text-red-500">{formatCurrency(item.product.price)}</p>
                           </div>
                           <div className="flex items-center gap-1">
                             <Button variant="outline" size="icon" className="h-7 w-7" onClick={() => updateQty(item.product.id, -1)}><Minus className="h-3 w-3" /></Button>
@@ -144,7 +144,7 @@ export default function SalesPage() {
                   <div className="space-y-2 pt-3 border-t border-border text-sm">
                     <div className="flex justify-between"><span className="text-muted-foreground">Subtotal</span><span>{formatCurrency(subtotal)}</span></div>
                     <div className="flex justify-between"><span className="text-muted-foreground">GST (18%)</span><span>{formatCurrency(gst)}</span></div>
-                    <div className="flex justify-between font-bold text-base pt-1"><span>Total</span><span className="text-teal-500">{formatCurrency(total)}</span></div>
+                    <div className="flex justify-between font-bold text-base pt-1"><span>Total</span><span className="text-red-500">{formatCurrency(total)}</span></div>
                   </div>
 
                   <Select value={paymentMethod} onValueChange={setPaymentMethod}>
@@ -264,12 +264,12 @@ export default function SalesPage() {
                   <div className="flex justify-between"><span>Subtotal</span><span>{formatCurrency(selectedOrder.subtotal)}</span></div>
                   <div className="flex justify-between"><span>CGST (9%)</span><span>{formatCurrency(selectedOrder.tax / 2)}</span></div>
                   <div className="flex justify-between"><span>SGST (9%)</span><span>{formatCurrency(selectedOrder.tax / 2)}</span></div>
-                  <div className="flex justify-between font-bold"><span>Total</span><span className="text-teal-500">{formatCurrency(selectedOrder.total)}</span></div>
+                  <div className="flex justify-between font-bold"><span>Total</span><span className="text-red-500">{formatCurrency(selectedOrder.total)}</span></div>
                 </div>
               </>
             ) : (
               <div className="text-center py-4">
-                <p className="text-teal-500 font-bold text-lg">{formatCurrency(total)}</p>
+                <p className="text-red-500 font-bold text-lg">{formatCurrency(total)}</p>
                 <p className="text-xs text-muted-foreground mt-1">Payment via {paymentMethod.toUpperCase()} · Invoice generated</p>
               </div>
             )}

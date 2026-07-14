@@ -10,6 +10,7 @@ import {
   ChevronLeft, Menu, X, Home, ClipboardList, BarChart3,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/shared/theme-toggle";
+import { BrandLogo } from "@/components/shared/brand-logo";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -65,14 +66,10 @@ export function AdminSidebar() {
   const NavContent = ({ mobile = false }: { mobile?: boolean }) => (
     <div className="flex flex-col h-full">
       <div className="flex items-center gap-3 px-4 h-16 border-b border-white/10">
-        <div className="h-9 w-9 rounded-lg bg-teal-500 flex items-center justify-center text-white font-bold shrink-0">
-          H
-        </div>
-        {(!collapsed || mobile) && (
-          <div className="min-w-0">
-            <div className="font-display font-bold text-white text-sm truncate">Highrange</div>
-            <div className="text-[10px] text-slate-400 uppercase tracking-wider">Store Manager</div>
-          </div>
+        {(!collapsed || mobile) ? (
+          <BrandLogo variant="full" size="sm" href="/admin" className="shrink-0" />
+        ) : (
+          <BrandLogo variant="mark" size="sm" href="/admin" />
         )}
         {mobile && (
           <Button variant="ghost" size="icon" className="ml-auto text-white" onClick={() => setMobileOpen(false)}>
@@ -85,7 +82,7 @@ export function AdminSidebar() {
         {NAV_GROUPS.map((group) => (
           <div key={group.title}>
             {(!collapsed || mobile) && (
-              <p className="px-3 mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+              <p className="px-3 mb-1.5 text-[10px] font-semibold uppercase tracking-wider text-neutral-500">
                 {group.title}
               </p>
             )}
@@ -100,14 +97,14 @@ export function AdminSidebar() {
                     className={cn(
                       "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-all relative",
                       active
-                        ? "bg-teal-500/20 text-teal-300"
-                        : "text-slate-400 hover:text-white hover:bg-white/5"
+                        ? "bg-primary/20 text-red-300"
+                        : "text-neutral-400 hover:text-white hover:bg-white/5"
                     )}
                   >
                     {active && (
                       <motion.div
                         layoutId="admin-nav"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-teal-400 rounded-r"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-primary rounded-r"
                       />
                     )}
                     <item.icon className="h-4 w-4 shrink-0" />
@@ -123,14 +120,14 @@ export function AdminSidebar() {
       <div className="p-3 border-t border-white/10 space-y-1">
         <Link
           href="/"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5"
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-neutral-400 hover:text-white hover:bg-white/5"
         >
           <Store className="h-4 w-4" />
           {(!collapsed || mobile) && <span>View Storefront</span>}
         </Link>
         <Link
           href="/"
-          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400 hover:text-white hover:bg-white/5"
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-neutral-400 hover:text-white hover:bg-white/5"
         >
           <Home className="h-4 w-4" />
           {(!collapsed || mobile) && <span>Back to Home</span>}

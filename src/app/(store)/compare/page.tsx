@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { GitCompareArrows, ShoppingCart, X, Star } from "lucide-react";
 import { toast } from "sonner";
@@ -67,7 +67,7 @@ export default function ComparePage() {
                       <X className="h-3.5 w-3.5" />
                     </button>
                     <div className="relative aspect-square w-28 mx-auto rounded-xl overflow-hidden bg-muted mb-3">
-                      <Image src={p!.images[0]} alt={p!.name} fill className="object-cover" unoptimized />
+                      <SafeImage src={p!.images[0]} alt={p!.name} fill className="object-cover" unoptimized />
                     </div>
                     <Link href={`/product/${p!.slug}`} className="font-medium hover:text-primary line-clamp-2">
                       {p!.name}

@@ -53,7 +53,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
           </div>
           <Button variant="ghost" size="icon" className="relative h-9 w-9">
             <Bell className="h-4 w-4" />
-            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-teal-500" />
+            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500" />
           </Button>
           <ThemeToggle />
           <div className="flex items-center gap-3 pl-3 border-l border-border">
@@ -61,7 +61,7 @@ function AdminShell({ children }: { children: React.ReactNode }) {
               <p className="text-sm font-medium">Rajesh Kumar</p>
               <p className="text-xs text-muted-foreground">Store Manager</p>
             </div>
-            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-teal-500 to-teal-700 flex items-center justify-center text-white text-xs font-bold ring-2 ring-teal-500/30">
+            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center text-white text-xs font-bold ring-2 ring-red-500/30">
               {getInitials("Rajesh Kumar")}
             </div>
           </div>

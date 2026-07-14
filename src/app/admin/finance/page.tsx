@@ -68,7 +68,7 @@ export default function FinancePage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card hover:shadow-md transition-shadow">
             <CardContent className="p-4">
-              <s.icon className="h-4 w-4 text-teal-500 mb-2" />
+              <s.icon className="h-4 w-4 text-red-500 mb-2" />
               <p className="text-xs text-muted-foreground">{s.label}</p>
               <p className="text-xl font-bold mt-0.5">{s.value}</p>
               {s.change !== undefined && (
@@ -187,7 +187,7 @@ export default function FinancePage() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-3 gap-4 mt-4 p-4 rounded-xl bg-muted/30">
-                <div className="text-center"><p className="text-xs text-muted-foreground">YTD Revenue</p><p className="text-lg font-bold text-teal-500">{formatCurrency(revenue)}</p></div>
+                <div className="text-center"><p className="text-xs text-muted-foreground">YTD Revenue</p><p className="text-lg font-bold text-red-500">{formatCurrency(revenue)}</p></div>
                 <div className="text-center"><p className="text-xs text-muted-foreground">YTD Expenses</p><p className="text-lg font-bold text-orange-500">{formatCurrency(expenses)}</p></div>
                 <div className="text-center"><p className="text-xs text-muted-foreground">YTD Profit</p><p className="text-lg font-bold text-emerald-500">{formatCurrency(profit)}</p></div>
               </div>
@@ -260,9 +260,9 @@ export default function FinancePage() {
                   </LineChart>
                 </ResponsiveContainer>
               </div>
-              <div className="mt-4 p-4 rounded-xl bg-teal-500/10 border border-teal-500/20 flex justify-between">
+              <div className="mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex justify-between">
                 <span className="font-medium">Net Cash Position</span>
-                <span className="font-bold text-teal-500">{formatCurrency(cashFlow.reduce((s, c) => s + c.inflow - c.outflow, 0))}</span>
+                <span className="font-bold text-red-500">{formatCurrency(cashFlow.reduce((s, c) => s + c.inflow - c.outflow, 0))}</span>
               </div>
             </CardContent>
           </Card>

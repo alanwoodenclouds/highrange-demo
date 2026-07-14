@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { Star, ShoppingCart, Heart, GitCompareArrows } from "lucide-react";
 import { toast } from "sonner";
@@ -37,7 +37,7 @@ export function QuickView({ product, open, onOpenChange }: QuickViewProps) {
       <DialogContent className="max-w-3xl p-0 overflow-hidden">
         <div className="grid sm:grid-cols-2 gap-0">
           <div className="relative aspect-square bg-muted">
-            <Image
+            <SafeImage
               src={product.images[0]}
               alt={product.name}
               fill

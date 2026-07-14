@@ -23,14 +23,14 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const CHART_COLORS = ["var(--chart-1)", "var(--chart-2)", "var(--chart-3)", "var(--chart-4)", "var(--chart-5)"];
 
 const STATUS_COLORS: Record<OrderStatus, string> = {
-  pending: "#f59e0b",
-  confirmed: "#3b82f6",
-  processing: "#8b5cf6",
-  shipped: "#06b6d4",
-  out_for_delivery: "#14b8a6",
-  delivered: "#10b981",
-  cancelled: "#ef4444",
-  returned: "#f97316",
+  pending: "#a3a3a3",
+  confirmed: "#525252",
+  processing: "#737373",
+  shipped: "#f07178",
+  out_for_delivery: "#e31e24",
+  delivered: "#16a34a",
+  cancelled: "#b91c1c",
+  returned: "#1a1a1a",
 };
 
 function StatCard({
@@ -113,10 +113,10 @@ export default function AdminDashboardPage() {
       </div>
 
       <StaggerChildren className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StaggerItem><StatCard title="Total Sales" value={formatNumber(stats.totalSales)} change={stats.salesChange} icon={ShoppingBag} accent="bg-teal-500/15 text-teal-500" /></StaggerItem>
+        <StaggerItem><StatCard title="Total Sales" value={formatNumber(stats.totalSales)} change={stats.salesChange} icon={ShoppingBag} accent="bg-red-500/15 text-red-500" /></StaggerItem>
         <StaggerItem><StatCard title="Revenue" value={formatCurrency(stats.revenue)} change={stats.revenueChange} icon={IndianRupee} accent="bg-emerald-500/15 text-emerald-500" /></StaggerItem>
         <StaggerItem><StatCard title="Orders" value={formatNumber(stats.orders)} change={stats.ordersChange} icon={Package} accent="bg-blue-500/15 text-blue-500" /></StaggerItem>
-        <StaggerItem><StatCard title="Deliveries" value={formatNumber(stats.deliveries)} icon={Truck} accent="bg-violet-500/15 text-violet-500" /></StaggerItem>
+        <StaggerItem><StatCard title="Deliveries" value={formatNumber(stats.deliveries)} icon={Truck} accent="bg-red-500/15 text-red-500" /></StaggerItem>
         <StaggerItem><StatCard title="Inventory Value" value={formatCurrency(stats.inventoryValue)} icon={Package} accent="bg-amber-500/15 text-amber-500" /></StaggerItem>
         <StaggerItem><StatCard title="Pending Deliveries" value={formatNumber(stats.pendingDeliveries)} icon={Truck} accent="bg-orange-500/15 text-orange-500" /></StaggerItem>
         <StaggerItem><StatCard title="Attendance" value={`${stats.attendanceRate}%`} icon={UserCheck} accent="bg-cyan-500/15 text-cyan-500" /></StaggerItem>
@@ -126,7 +126,7 @@ export default function AdminDashboardPage() {
       <div className="grid lg:grid-cols-3 gap-6">
         <Card className="glass-card lg:col-span-2">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5 text-teal-500" />Sales Trend</CardTitle>
+            <CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5 text-red-500" />Sales Trend</CardTitle>
             <CardDescription>Monthly revenue & order volume — FY 2025-26</CardDescription>
           </CardHeader>
           <CardContent>
@@ -262,7 +262,7 @@ export default function AdminDashboardPage() {
           <Card className="glass-card">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
-                <Users className="h-4 w-4 text-teal-500" />Attendance Today
+                <Users className="h-4 w-4 text-red-500" />Attendance Today
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">

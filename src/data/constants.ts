@@ -42,7 +42,7 @@ export const CATEGORIES: Category[] = [
     name: "Washing Machines",
     slug: "washing-machines",
     description: "Front load, top load & semi-automatic",
-    image: "https://images.unsplash.com/photo-1626806642871-4b1be3e0b0c6?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=600&h=400&fit=crop",
     icon: "WashingMachine",
     productCount: 0,
   },
@@ -51,7 +51,7 @@ export const CATEGORIES: Category[] = [
     name: "Air Conditioners",
     slug: "air-conditioners",
     description: "Split, window & portable ACs",
-    image: "https://images.unsplash.com/photo-1631545806609-cbbcf37fcff3?w=600&h=400&fit=crop",
+    image: "https://images.unsplash.com/photo-1558002038-1055907df827?w=600&h=400&fit=crop",
     icon: "AirVent",
     productCount: 0,
   },
@@ -257,22 +257,22 @@ export const KERALE_CITIES = [
   "Kottayam", "Ernakulam", "Thrissur", "Kollam", "Alappuzha", "Pathanamthitta",
 ];
 
+/** Verified-working Unsplash photo IDs only (404s removed). */
 export const PRODUCT_IMAGES: Record<string, string[]> = {
   televisions: [
     "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=800&h=800&fit=crop",
     "https://images.unsplash.com/photo-1461151304267-38535e780c79?w=800&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1593784991095-a20506947072?w=800&h=800&fit=crop",
   ],
   refrigerators: [
     "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=800&h=800&fit=crop",
     "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=800&h=800&fit=crop",
   ],
   "washing-machines": [
-    "https://images.unsplash.com/photo-1626806642871-4b1be3e0b0c6?w=800&h=800&fit=crop",
     "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=800&h=800&fit=crop",
   ],
   "air-conditioners": [
-    "https://images.unsplash.com/photo-1631545806609-cbbcf37fcff3?w=800&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=800&fit=crop",
+    "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=800&fit=crop",
   ],
   "mobile-phones": [
     "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=800&fit=crop",
@@ -281,12 +281,10 @@ export const PRODUCT_IMAGES: Record<string, string[]> = {
   ],
   laptops: [
     "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1525547719571-a2d4ac705b46?w=800&h=800&fit=crop",
     "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&h=800&fit=crop",
   ],
   "kitchen-appliances": [
     "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1585515320310-259814833e87?w=800&h=800&fit=crop",
   ],
   "smart-home": [
     "https://images.unsplash.com/photo-1558002038-1055907df827?w=800&h=800&fit=crop",

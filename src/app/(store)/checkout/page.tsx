@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -240,7 +240,7 @@ export default function CheckoutPage() {
                     {items.map(({ product, quantity }) => (
                       <div key={product.id} className="flex gap-3">
                         <div className="relative h-14 w-14 shrink-0 rounded-lg overflow-hidden bg-muted">
-                          <Image
+                          <SafeImage
                             src={product.images[0]}
                             alt={product.name}
                             fill

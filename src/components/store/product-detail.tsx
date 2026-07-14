@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import {
   Star,
@@ -117,7 +117,7 @@ export function ProductDetail({
           <FadeIn>
             <div className="space-y-4">
               <div className="relative aspect-square rounded-2xl overflow-hidden bg-muted group cursor-zoom-in">
-                <Image
+                <SafeImage
                   src={product.images[selectedImage]}
                   alt={product.name}
                   fill
@@ -142,7 +142,7 @@ export function ProductDetail({
                       selectedImage === i ? "border-primary ring-2 ring-primary/20" : "border-transparent opacity-70 hover:opacity-100"
                     )}
                   >
-                    <Image src={img} alt="" fill className="object-cover" sizes="80px" unoptimized />
+                    <SafeImage src={img} alt="" fill className="object-cover" sizes="80px" unoptimized />
                   </button>
                 ))}
               </div>

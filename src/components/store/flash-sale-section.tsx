@@ -23,7 +23,7 @@ export function FlashSaleSection({ products }: FlashSaleSectionProps) {
 
   return (
     <FadeIn>
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-primary to-slate-900 p-6 sm:p-8 lg:p-10">
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-black via-[#e31e24] to-black p-6 sm:p-8 lg:p-10">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&h=400&fit=crop')] bg-cover bg-center opacity-10" />
 
         <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">

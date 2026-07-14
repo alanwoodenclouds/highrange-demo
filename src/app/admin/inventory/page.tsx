@@ -99,8 +99,8 @@ export default function InventoryPage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card hover:shadow-md transition-shadow">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.warn ? "bg-amber-500/15" : "bg-teal-500/15")}>
-                <s.icon className={cn("h-5 w-5", s.warn ? "text-amber-500" : "text-teal-500")} />
+              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.warn ? "bg-amber-500/15" : "bg-red-500/15")}>
+                <s.icon className={cn("h-5 w-5", s.warn ? "text-amber-500" : "text-red-500")} />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">{s.label}</p>

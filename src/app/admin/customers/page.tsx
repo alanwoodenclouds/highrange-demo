@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { motion } from "framer-motion";
 import {
   Search, Users, Crown, Gift, Mail, ChevronLeft, ChevronRight, ShoppingBag, MapPin,
@@ -21,7 +21,7 @@ import type { Customer, MembershipTier } from "@/types";
 
 const PAGE_SIZE = 12;
 const TIER_COLORS: Record<MembershipTier, string> = {
-  Bronze: "#cd7f32", Silver: "#94a3b8", Gold: "#f59e0b", Platinum: "#8b5cf6",
+  Bronze: "#a16207", Silver: "#a3a3a3", Gold: "#ca8a04", Platinum: "#1a1a1a",
 };
 
 export default function CustomersPage() {
@@ -80,8 +80,8 @@ export default function CustomersPage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className="h-10 w-10 rounded-lg bg-teal-500/15 flex items-center justify-center">
-                <s.icon className="h-5 w-5 text-teal-500" />
+              <div className="h-10 w-10 rounded-lg bg-red-500/15 flex items-center justify-center">
+                <s.icon className="h-5 w-5 text-red-500" />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -140,7 +140,7 @@ export default function CustomersPage() {
                     <td className="py-3">
                       <div className="flex items-center gap-3">
                         <div className="relative h-9 w-9 rounded-full overflow-hidden bg-muted shrink-0">
-                          {customer.avatar && <Image src={customer.avatar} alt={customer.name} fill className="object-cover" sizes="36px" />}
+                          {customer.avatar && <SafeImage src={customer.avatar} alt={customer.name} fill className="object-cover" sizes="36px" />}
                         </div>
                         <div>
                           <p className="font-medium">{customer.name}</p>
@@ -206,7 +206,7 @@ export default function CustomersPage() {
               <DialogHeader>
                 <div className="flex items-center gap-4">
                   <div className="relative h-14 w-14 rounded-full overflow-hidden bg-muted">
-                    {selected.avatar && <Image src={selected.avatar} alt={selected.name} fill className="object-cover" sizes="56px" />}
+                    {selected.avatar && <SafeImage src={selected.avatar} alt={selected.name} fill className="object-cover" sizes="56px" />}
                   </div>
                   <div>
                     <DialogTitle>{selected.name}</DialogTitle>

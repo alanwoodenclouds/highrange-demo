@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import { motion } from "framer-motion";
 import {
   Truck, MapPin, Clock, Navigation, CheckCircle2, Package, Route,
@@ -42,7 +42,7 @@ function KeralaMap({ agents, selectedBranch }: { agents: typeof DELIVERY_AGENTS;
   const filteredAgents = selectedBranch === "all" ? agents : agents.filter((a) => a.branch === selectedBranch);
 
   return (
-    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-teal-950/80 via-slate-900 to-slate-950 border border-teal-500/20">
+    <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-neutral-950/80 via-slate-900 to-slate-950 border border-red-500/20">
       <svg viewBox="0 0 100 75" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <radialGradient id="mapGlow" cx="50%" cy="50%" r="50%">
@@ -58,7 +58,7 @@ function KeralaMap({ agents, selectedBranch }: { agents: typeof DELIVERY_AGENTS;
         <path d="M15,20 Q30,10 45,15 T70,12 Q85,18 90,30 T85,50 Q75,65 55,68 T25,62 Q10,50 12,35 Z" fill="none" stroke="#14b8a6" strokeWidth="0.3" strokeOpacity="0.4" strokeDasharray="2,1" />
         <path d="M20,25 Q35,22 50,28 T75,25" fill="none" stroke="#2dd4bf" strokeWidth="0.15" strokeOpacity="0.3" />
         <path d="M18,45 Q40,42 60,48 T82,44" fill="none" stroke="#2dd4bf" strokeWidth="0.15" strokeOpacity="0.3" />
-        <text x="50" y="6" textAnchor="middle" fill="#5eead4" fontSize="3" opacity="0.6">IDUKKI DISTRICT · KERALA</text>
+        <text x="50" y="6" textAnchor="middle" fill="#f87171" fontSize="3" opacity="0.6">IDUKKI DISTRICT · KERALA</text>
         {branches.map(([name, coords]) => {
           const { x, y } = toXY(coords.lat, coords.lng);
           return (
@@ -81,8 +81,8 @@ function KeralaMap({ agents, selectedBranch }: { agents: typeof DELIVERY_AGENTS;
           );
         })}
       </svg>
-      <div className="absolute bottom-3 left-3 flex gap-3 text-[10px] text-slate-400">
-        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-teal-400" />Branch</span>
+      <div className="absolute bottom-3 left-3 flex gap-3 text-[10px] text-neutral-400">
+        <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-red-400" />Branch</span>
         <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />Agent en route</span>
       </div>
     </div>
@@ -139,8 +139,8 @@ export default function DeliveriesPage() {
         ].map((s) => (
           <Card key={s.label} className="glass-card hover:shadow-md transition-all">
             <CardContent className="p-4 flex items-center gap-3">
-              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.accent ? "bg-amber-500/15" : "bg-teal-500/15")}>
-                <s.icon className={cn("h-5 w-5", s.accent ? "text-amber-500" : "text-teal-500")} />
+              <div className={cn("h-10 w-10 rounded-lg flex items-center justify-center", s.accent ? "bg-amber-500/15" : "bg-red-500/15")}>
+                <s.icon className={cn("h-5 w-5", s.accent ? "text-amber-500" : "text-red-500")} />
               </div>
               <div>
                 <p className="text-xs text-muted-foreground">{s.label}</p>
@@ -154,7 +154,7 @@ export default function DeliveriesPage() {
       <div className="grid lg:grid-cols-3 gap-6">
         <Card className="glass-card lg:col-span-2">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-teal-500" />Live Delivery Map</CardTitle>
+            <CardTitle className="flex items-center gap-2"><MapPin className="h-5 w-5 text-red-500" />Live Delivery Map</CardTitle>
             <CardDescription>Branch locations & active delivery agents in Idukki</CardDescription>
           </CardHeader>
           <CardContent>
@@ -169,9 +169,9 @@ export default function DeliveriesPage() {
           </CardHeader>
           <CardContent className="space-y-3 max-h-80 overflow-y-auto">
             {DELIVERY_AGENTS.filter((a) => a.status !== "off_duty").slice(0, 6).map((agent) => (
-              <motion.div key={agent.id} className="flex items-center gap-3 p-2.5 rounded-xl border border-border/50 hover:border-teal-500/30 transition-colors" whileHover={{ x: 2 }}>
+              <motion.div key={agent.id} className="flex items-center gap-3 p-2.5 rounded-xl border border-border/50 hover:border-red-500/30 transition-colors" whileHover={{ x: 2 }}>
                 <div className="relative h-10 w-10 rounded-full overflow-hidden bg-muted shrink-0">
-                  {agent.avatar && <Image src={agent.avatar} alt={agent.name} fill className="object-cover" sizes="40px" />}
+                  {agent.avatar && <SafeImage src={agent.avatar} alt={agent.name} fill className="object-cover" sizes="40px" />}
                   <span className={cn("absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-card", agent.status === "on_delivery" ? "bg-amber-500" : agent.status === "available" ? "bg-emerald-500" : "bg-slate-500")} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -268,7 +268,7 @@ export default function DeliveriesPage() {
             ].map((r) => (
               <Card key={r.route} className="glass-card">
                 <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-2"><Navigation className="h-4 w-4 text-teal-500" /><p className="font-medium text-sm">{r.route}</p></div>
+                  <div className="flex items-center gap-2 mb-2"><Navigation className="h-4 w-4 text-red-500" /><p className="font-medium text-sm">{r.route}</p></div>
                   <div className="grid grid-cols-3 gap-2 text-center text-xs">
                     <div className="p-2 rounded-lg bg-muted/30"><p className="text-muted-foreground">Distance</p><p className="font-bold">{r.distance}</p></div>
                     <div className="p-2 rounded-lg bg-muted/30"><p className="text-muted-foreground">Time</p><p className="font-bold">{r.time}</p></div>
@@ -291,7 +291,7 @@ export default function DeliveriesPage() {
               </DialogHeader>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 p-3 rounded-xl bg-muted/30">
-                  <Phone className="h-4 w-4 text-teal-500" />
+                  <Phone className="h-4 w-4 text-red-500" />
                   <div>
                     <p className="text-sm font-medium">{selected.customerPhone}</p>
                     <p className="text-xs text-muted-foreground">{selected.address}, {selected.pincode}</p>
@@ -300,10 +300,10 @@ export default function DeliveriesPage() {
 
                 <div>
                   <p className="text-sm font-medium mb-2">Delivery Timeline</p>
-                  <div className="space-y-3 pl-3 border-l-2 border-teal-500/30">
+                  <div className="space-y-3 pl-3 border-l-2 border-red-500/30">
                     {selected.timeline.map((step, i) => (
                       <div key={i} className="relative pl-4">
-                        <span className="absolute -left-[5px] top-1.5 h-2 w-2 rounded-full bg-teal-500" />
+                        <span className="absolute -left-[5px] top-1.5 h-2 w-2 rounded-full bg-red-500" />
                         <p className="text-sm font-medium">{step.status}</p>
                         <p className="text-xs text-muted-foreground">{step.note} · {formatDate(step.time)}</p>
                       </div>
@@ -312,8 +312,8 @@ export default function DeliveriesPage() {
                 </div>
 
                 {selected.status === "out_for_delivery" && (
-                  <div className="p-4 rounded-xl border border-teal-500/30 bg-teal-500/5">
-                    <div className="flex items-center gap-2 mb-3"><Shield className="h-4 w-4 text-teal-500" /><p className="text-sm font-medium">OTP Confirmation</p></div>
+                  <div className="p-4 rounded-xl border border-red-500/30 bg-red-500/5">
+                    <div className="flex items-center gap-2 mb-3"><Shield className="h-4 w-4 text-red-500" /><p className="text-sm font-medium">OTP Confirmation</p></div>
                     {otpVerified ? (
                       <div className="flex items-center gap-2 text-emerald-500 text-sm"><CheckCircle2 className="h-4 w-4" />OTP Verified — Delivery confirmed</div>
                     ) : (

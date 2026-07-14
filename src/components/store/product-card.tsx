@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { SafeImage } from "@/components/shared/safe-image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Heart, ShoppingCart, GitCompareArrows, Star, Eye } from "lucide-react";
@@ -39,7 +39,7 @@ export function ProductCard({ product, view = "grid", onQuickView }: ProductCard
         className="group flex gap-4 rounded-xl border border-border bg-card p-4 hover:shadow-lg transition-shadow"
       >
         <Link href={`/product/${product.slug}`} className="relative w-32 h-32 shrink-0 rounded-lg overflow-hidden bg-muted">
-          <Image src={product.images[0]} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="128px" unoptimized />
+          <SafeImage src={product.images[0]} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" sizes="128px" unoptimized />
           {product.discount > 0 && (
             <Badge className="absolute top-2 left-2 bg-accent-brand border-0 text-white text-[10px]">
               -{product.discount}%
@@ -79,7 +79,7 @@ export function ProductCard({ product, view = "grid", onQuickView }: ProductCard
       className="group relative rounded-xl border border-border bg-card overflow-hidden hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
     >
       <Link href={`/product/${product.slug}`} className="block relative aspect-square bg-muted overflow-hidden">
-        <Image
+        <SafeImage
           src={product.images[0]}
           alt={product.name}
           fill
