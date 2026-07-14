@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is(.dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f7fa;
+  --foreground: #0a1628;
+  --card: #ffffff;
+  --card-foreground: #0a1628;
+  --popover: #ffffff;
+  --popover-foreground: #0a1628;
+  --primary: #0e4d5c;
+  --primary-foreground: #f0fdfa;
+  --secondary: #e8eef2;
+  --secondary-foreground: #0e4d5c;
+  --muted: #eef2f6;
+  --muted-foreground: #5a6a7a;
+  --accent: #e8eef2;
+  --accent-foreground: #0e4d5c;
+  --accent-brand: #e85d04;
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: #d8e0e8;
+  --input: #d8e0e8;
+  --ring: #0e4d5c;
+  --radius: 0.75rem;
+  --sidebar: #0a1628;
+  --sidebar-foreground: #e8eef2;
+  --chart-1: #0e4d5c;
+  --chart-2: #e85d04;
+  --chart-3: #14919b;
+  --chart-4: #f4a261;
+  --chart-5: #2a9d8f;
+}
+
+.dark {
+  --background: #070d16;
+  --foreground: #e8eef2;
+  --card: #0f1a28;
+  --card-foreground: #e8eef2;
+  --popover: #0f1a28;
+  --popover-foreground: #e8eef2;
+  --primary: #2dd4bf;
+  --primary-foreground: #042f2e;
+  --secondary: #1a2738;
+  --secondary-foreground: #e8eef2;
+  --muted: #1a2738;
+  --muted-foreground: #94a3b8;
+  --accent: #1a2738;
+  --accent-foreground: #e8eef2;
+  --accent-brand: #fb923c;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --border: #1e2d3d;
+  --input: #1e2d3d;
+  --ring: #2dd4bf;
+  --sidebar: #050a12;
+  --sidebar-foreground: #e8eef2;
+  --chart-1: #2dd4bf;
+  --chart-2: #fb923c;
+  --chart-3: #38bdf8;
+  --chart-4: #a78bfa;
+  --chart-5: #34d399;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-brand: var(--accent-brand);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --font-sans: var(--font-dm-sans);
+  --font-display: var(--font-outfit);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-dm-sans), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-outfit), system-ui, sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/20 dark:border-white/10;
+  }
+  .glass-card {
+    @apply bg-white/80 dark:bg-card/80 backdrop-blur-lg border border-border/50 shadow-lg shadow-black/5;
+  }
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-chart-3 bg-clip-text text-transparent;
+  }
+  .skeleton {
+    @apply animate-pulse bg-muted rounded-lg;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.countdown-pulse {
+  animation: countdown-pulse 1s ease-in-out infinite;
 }
